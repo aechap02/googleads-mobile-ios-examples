@@ -16,6 +16,8 @@
 
 import GoogleMobileAds
 import UIKit
+import MoPub
+import MoPubAdapter
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,10 +25,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   func application(_ application: UIApplication,
-      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
     // Initialize the Google Mobile Ads SDK with the AdMob application ID.
-    GADMobileAds.sharedInstance().start(completionHandler: nil)
+    // GADMobileAds.sharedInstance().start(completionHandler: nil)
+
+    let sdkConfig = MPMoPubConfiguration(adUnitIdForAppInitialization: "<YOUR_APP_ID>")
+    sdkConfig.loggingLevel = .debug
+
+    MoPub.sharedInstance().initializeSdk(with: sdkConfig) {
+        print("MoPub SDK initialized.")
+    }
 
     return true
   }

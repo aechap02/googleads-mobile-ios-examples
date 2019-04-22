@@ -17,19 +17,20 @@
 import GoogleMobileAds
 import UIKit
 
-class TableViewController: UITableViewController, GADBannerViewDelegate {
+class TableViewController: UITableViewController, GADBannerViewDelegate, GADAdSizeDelegate {
 
   // MARK: - Properties
 
   var tableViewItems = [AnyObject]()
   var adsToLoad = [GADBannerView]()
   var loadStateForAds = [GADBannerView: Bool]()
-  let adUnitID = "ca-app-pub-3940256099942544/2934735716"
+  let adUnitID = "<YOUR_AD_UNIT_ID>"
+  let targeting = ["ptype":"listings"]
   // A banner ad is placed in the UITableView once per `adInterval`. iPads will have a
   // larger ad interval to avoid mutliple ads being on screen at the same time.
   let adInterval = UIDevice.current.userInterfaceIdiom == .pad ? 16 : 8
   // The banner ad height.
-  let adViewHeight = CGFloat(100)
+  let adViewHeight = CGFloat(250)
 
   // MARK: - UIViewController methods
 
@@ -41,7 +42,7 @@ class TableViewController: UITableViewController, GADBannerViewDelegate {
         forCellReuseIdentifier: "BannerViewCell")
 
     // Allow row height to be determined dynamically while optimizing with an estimated row height.
-    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 135
 
     // Load the sample data.
@@ -56,13 +57,11 @@ class TableViewController: UITableViewController, GADBannerViewDelegate {
     return 1
   }
 
-  override func tableView(_ tableView: UITableView,
-      heightForRowAt indexPath: IndexPath) -> CGFloat {
-    if let tableItem = tableViewItems[indexPath.row] as? GADBannerView {
-      let isAdLoaded = loadStateForAds[tableItem]
-      return isAdLoaded == true ? adViewHeight : 0
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    if let bannerview = tableViewItems[indexPath.row] as? GADBannerView {
+      return bannerview.adSize.size.height
     }
-    return UITableViewAutomaticDimension
+    return UITableView.automaticDimension
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -110,15 +109,21 @@ class TableViewController: UITableViewController, GADBannerViewDelegate {
     // Mark banner ad as succesfully loaded.
     loadStateForAds[adView] = true
     // Load the next ad in the adsToLoad list.
+
+    print("ad view: \(ObjectIdentifier(adView)) | did receive ad: \(adView.adNetworkClassName ?? "")")
     preloadNextAd()
   }
 
-  func adView(_ adView: GADBannerView,
-      didFailToReceiveAdWithError error: GADRequestError) {
-    print("Failed to receive ad: \(error.localizedDescription)")
+  func adView(_ adView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+    print("ad view: \(ObjectIdentifier(adView)) | failed to receive ad: \(error.localizedDescription)")
     // Load the next ad in the adsToLoad list.
     preloadNextAd()
   }
+
+    func adView(_ bannerView: GADBannerView, willChangeAdSizeTo size: GADAdSize) {
+        print("ad view: \(ObjectIdentifier(bannerView)) | will change size: \(size.size)")
+        tableView.reloadData()
+    }
 
   // MARK: - UITableView source data generation
 
@@ -129,11 +134,13 @@ class TableViewController: UITableViewController, GADBannerViewDelegate {
     tableView.layoutIfNeeded()
     while index < tableViewItems.count {
       let adSize = GADAdSizeFromCGSize(
-          CGSize(width: tableView.contentSize.width, height: adViewHeight))
-      let adView = GADBannerView(adSize: adSize)
+          CGSize(width: 300, height: adViewHeight))
+      let adView = DFPBannerView(adSize: adSize)
       adView.adUnitID = adUnitID
       adView.rootViewController = self
       adView.delegate = self
+      adView.adSizeDelegate = self
+      adView.validAdSizes = [NSValueFromGADAdSize(kGADAdSizeBanner), NSValueFromGADAdSize(GADAdSizeFromCGSize(CGSize(width: 300, height: 250)))]
 
       tableViewItems.insert(adView, at: index)
       adsToLoad.append(adView)
@@ -147,8 +154,8 @@ class TableViewController: UITableViewController, GADBannerViewDelegate {
   func preloadNextAd() {
     if !adsToLoad.isEmpty {
       let ad = adsToLoad.removeFirst()
-      let adRequest = GADRequest()
-      adRequest.testDevices = [ kGADSimulatorID ]
+      let adRequest = DFPRequest()
+      adRequest.customTargeting = targeting
       ad.load(adRequest)
     }
   }

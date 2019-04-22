@@ -17,9 +17,12 @@
 		846A6C781D73972000270B27 /* menu_item_image-web.png in Resources */ = {isa = PBXBuildFile; fileRef = 846A6C771D73972000270B27 /* menu_item_image-web.png */; };
 		846A6C821D760EC000270B27 /* MenuItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846A6C811D760EC000270B27 /* MenuItem.xib */; };
 		84B326D71D876FCB00517F8F /* BannerAd.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B326D61D876FCB00517F8F /* BannerAd.xib */; };
+		D3CE4EEB47219932FFAA3DB6 /* Pods_BannerTableViewExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA446D3D2E914B0076C86335 /* Pods_BannerTableViewExample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07FFA55989A39154DBB2F901 /* Pods-BannerTableViewExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BannerTableViewExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BannerTableViewExample/Pods-BannerTableViewExample.debug.xcconfig"; sourceTree = "<group>"; };
+		40DED761E3CD5D20D99E0F9C /* Pods-BannerTableViewExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BannerTableViewExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-BannerTableViewExample/Pods-BannerTableViewExample.release.xcconfig"; sourceTree = "<group>"; };
 		843021FF1DADB82F00614B4A /* menuItemsJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menuItemsJSON.json; sourceTree = "<group>"; };
 		846A6C401D6E35FC00270B27 /* BannerTableViewExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BannerTableViewExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		846A6C431D6E35FD00270B27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +35,7 @@
 		846A6C771D73972000270B27 /* menu_item_image-web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_item_image-web.png"; sourceTree = "<group>"; };
 		846A6C811D760EC000270B27 /* MenuItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuItem.xib; sourceTree = "<group>"; };
 		84B326D61D876FCB00517F8F /* BannerAd.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BannerAd.xib; sourceTree = "<group>"; };
+		CA446D3D2E914B0076C86335 /* Pods_BannerTableViewExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BannerTableViewExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +43,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3CE4EEB47219932FFAA3DB6 /* Pods_BannerTableViewExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37B145244E69F37BBAEEF085 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA446D3D2E914B0076C86335 /* Pods_BannerTableViewExample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		846A6C371D6E35FC00270B27 = {
 			isa = PBXGroup;
 			children = (
 				846A6C421D6E35FC00270B27 /* BannerTableViewExample */,
 				846A6C411D6E35FC00270B27 /* Products */,
+				E0DD4013207E5CB089CB35FF /* Pods */,
+				37B145244E69F37BBAEEF085 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +94,15 @@
 			path = BannerTableViewExample;
 			sourceTree = "<group>";
 		};
+		E0DD4013207E5CB089CB35FF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				07FFA55989A39154DBB2F901 /* Pods-BannerTableViewExample.debug.xcconfig */,
+				40DED761E3CD5D20D99E0F9C /* Pods-BannerTableViewExample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 846A6C681D6E35FD00270B27 /* Build configuration list for PBXNativeTarget "BannerTableViewExample" */;
 			buildPhases = (
+				F0F6EFB255092486220A763A /* [CP] Check Pods Manifest.lock */,
 				846A6C3C1D6E35FC00270B27 /* Sources */,
 				846A6C3D1D6E35FC00270B27 /* Frameworks */,
 				846A6C3E1D6E35FC00270B27 /* Resources */,
+				22C810FBE1C83DB3B7BB7BD2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -111,7 +137,8 @@
 				TargetAttributes = {
 					846A6C3F1D6E35FC00270B27 = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0900;
+						DevelopmentTeam = BCE8H2EU3T;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -121,6 +148,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -149,6 +177,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		22C810FBE1C83DB3B7BB7BD2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BannerTableViewExample/Pods-BannerTableViewExample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/mopub-ios-sdk/MoPub.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MoPub.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BannerTableViewExample/Pods-BannerTableViewExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0F6EFB255092486220A763A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BannerTableViewExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		846A6C3C1D6E35FC00270B27 /* Sources */ = {
@@ -278,44 +357,46 @@
 		};
 		846A6C691D6E35FD00270B27 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07FFA55989A39154DBB2F901 /* Pods-BannerTableViewExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BCE8H2EU3T;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = BannerTableViewExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.admob.mediation.BannerTableViewExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cbsinteractive.BannerTableViewExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
 		846A6C6A1D6E35FD00270B27 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40DED761E3CD5D20D99E0F9C /* Pods-BannerTableViewExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = BCE8H2EU3T;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = BannerTableViewExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.admob.mediation.BannerTableViewExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cbsinteractive.BannerTableViewExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
